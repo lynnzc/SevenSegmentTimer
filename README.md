@@ -1,7 +1,7 @@
 # SevenSegmentTimer  
-	An Android custom timer view that imitates the 7-Segment Display.  
-  
-	![demo gif](https://github.com/lynnzc/SevenSegmentTimer/blob/master/demo.gif)  
+  An Android custom timer view that imitates the 7-Segment Display.  
+
+  ![demo gif](https://github.com/lynnzc/SevenSegmentTimer/blob/master/demo.gif)  
 
 # License  
     
