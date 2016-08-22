@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CountDownDigitTimer">
+        <attr name="timerBgColor" format="color" />
+        <attr name="timerOnColor" format="color" />
+        <attr name="timerOffColor" format="color" />
+        <attr name="separatorBgColor" format="color" />
+        <attr name="separatorColor" format="color" />
+    </declare-styleable>
+</resources>

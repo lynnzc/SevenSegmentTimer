@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final CountDownDigitTimer v = (CountDownDigitTimer) findViewById(R.id.digit_view);
-        v.setCountDownTime(11, 19, 38);
+
+        v.setCountDownTime(99, 59, 59);
     }
 }

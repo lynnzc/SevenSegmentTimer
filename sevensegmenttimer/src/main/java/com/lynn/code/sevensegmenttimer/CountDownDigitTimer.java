@@ -1,6 +1,7 @@
 package com.lynn.code.sevensegmenttimer;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -54,11 +55,37 @@ public class CountDownDigitTimer extends LinearLayout {
     public CountDownDigitTimer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CountDownDigitTimer, 0, 0);
+
+        int timerBgColor = a.getColor(R.styleable.CountDownDigitTimer_timerBgColor, Color.BLACK);
+        int separatorBgColor = a.getColor(R.styleable.CountDownDigitTimer_separatorBgColor, Color.WHITE);
+        int separatorColor = a.getColor(R.styleable.CountDownDigitTimer_separatorColor, Color.BLACK);
+        int timerOnColor = a.getColor(R.styleable.CountDownDigitTimer_timerOnColor, Color.WHITE);
+        int timerOffColor = a.getColor(R.styleable.CountDownDigitTimer_timerOffColor, Color.GRAY);
+
+        mHourView.setBackgroundColor(timerBgColor);
+        mMinuteView.setBackgroundColor(timerBgColor);
+        mSecondView.setBackgroundColor(timerBgColor);
+        mHourView.setOnRes(timerOnColor);
+        mHourView.setOffRes(timerOffColor);
+        mMinuteView.setOnRes(timerOnColor);
+        mMinuteView.setOffRes(timerOffColor);
+        mSecondView.setOnRes(timerOnColor);
+        mSecondView.setOffRes(timerOffColor);
+
+        mLeftSeparator.setBackgroundColor(separatorBgColor);
+        mRightSeparator.setBackgroundColor(separatorBgColor);
+        mLeftSeparator.setSeparatorColor(separatorColor);
+        mRightSeparator.setSeparatorColor(separatorColor);
+
+        a.recycle();
     }
 
     private void init() {
         //default background
         setOrientation(LinearLayout.HORIZONTAL);
+        setBackgroundColor(Color.TRANSPARENT);
 
         mIsPartialVisibleIfLessThanAnHour = false;
         mIsPartialVisibleIfLessThanAMinute = false;
@@ -72,16 +99,9 @@ public class CountDownDigitTimer extends LinearLayout {
         mLeftSeparator.setStyle(TimeSeparatorView.SQUARE);
         mRightSeparator.setStyle(TimeSeparatorView.SQUARE);
 
-        mLeftSeparator.setBackgroundColor(Color.WHITE);
-        mRightSeparator.setBackgroundColor(Color.WHITE);
-
         mHourView = new SevenSegmentDigitView(getContext());
         mMinuteView = new SevenSegmentDigitView(getContext());
         mSecondView = new SevenSegmentDigitView(getContext());
-
-        mHourView.setBackgroundColor(Color.BLACK);
-        mMinuteView.setBackgroundColor(Color.BLACK);
-        mSecondView.setBackgroundColor(Color.BLACK);
 
         addView(mHourView);
         addView(mLeftSeparator);

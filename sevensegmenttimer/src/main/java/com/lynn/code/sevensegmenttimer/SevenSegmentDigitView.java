@@ -76,7 +76,7 @@ public class SevenSegmentDigitView extends View {
             return;
         }
 
-        //计算 显示一个数 需要的最小空间
+        //计算 显示一个数字 需要的最小空间
         mBound = new RectF();
         //为了取并集, 先计算其中一个空间
         mSegments.get(0).path.computeBounds(mBound, true);
@@ -87,8 +87,6 @@ public class SevenSegmentDigitView extends View {
             //取并集
             mBound.union(singleBound);
         }
-
-
     }
 
     @Override

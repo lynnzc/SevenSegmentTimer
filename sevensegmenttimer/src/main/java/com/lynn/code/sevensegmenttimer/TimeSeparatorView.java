@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.annotation.ColorInt;
 import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
@@ -30,6 +31,8 @@ public class TimeSeparatorView extends View {
 
     private Paint mPaint;
 
+    private int mSeparatorColor;
+
     public TimeSeparatorView(Context context) {
         this(context, null);
     }
@@ -51,14 +54,17 @@ public class TimeSeparatorView extends View {
 
         mSeparatorInsetFactor = 0.15;
 
+        mSeparatorColor = DEFAULT_COLOR;
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mPaint.setColor(DEFAULT_COLOR);
+//        mPaint.setColor(DEFAULT_COLOR);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        mPaint.setColor(mSeparatorColor);
         //移动到画布中心
         canvas.translate(canvas.getWidth() / 2, canvas.getHeight() / 2);
 
@@ -100,6 +106,10 @@ public class TimeSeparatorView extends View {
 
     public void setStyle(@SeparatorStyle int style) {
         mStyle = style;
+    }
+
+    public void setSeparatorColor(@ColorInt int color) {
+        mSeparatorColor = color;
     }
 
     @IntDef(value = {CIRCLE, SQUARE})
